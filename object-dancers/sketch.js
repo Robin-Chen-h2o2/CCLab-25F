@@ -37,8 +37,8 @@ class OldMan {
     this.x = startX;
     this.y = startY;
     this.s = 40
-    this.z = this.x * 0.98;
-    this.z1 = this.y * 1.01;
+    this.z = this.x * 1;
+    this.z1 = this.y * 1;
     this.x1 = width / 2;
     this.x2 = height / 2;
 
@@ -48,8 +48,8 @@ class OldMan {
     // your dancer's desired moves and behaviour
     this.y = sin(frameCount * 0.1) * 1 + height / 2
     this.x2 = -sin(frameCount * 0.1) * 3 + width / 2
-    this.x = sin(frameCount * 0.1) * 8 + width / 2
-    this.x1 = sin(frameCount * 0.1) * 4 + height / 2
+    this.x = sin(frameCount * 0.1) * 15 + width / 2
+    this.x1 = sin(frameCount * 0.1) * 3 + height / 2
   }
   display() {
     // the push and pop, along with the translate 
@@ -115,8 +115,8 @@ class OldMan {
     strokeWeight(3)
     fill(255, 232, 0)
     rectMode(CENTER);
-    rect(this.x1 * 0.72 + this.s * 0.16, this.y + this.s * 0.7, this.s * 0.23, this.s * 0.1)
-    rect(this.x1 * 0.72 - this.s * 0.16, this.y + this.s * 0.7, this.s * 0.23, this.s * 0.1)
+    rect(this.x1 * 1.97 + this.s * 0.16, this.y + this.s * 0.7, this.s * 0.23, this.s * 0.1)
+    rect(this.x1 * 1.97 - this.s * 0.16, this.y + this.s * 0.7, this.s * 0.23, this.s * 0.1)
 
     pop();
 
@@ -132,7 +132,7 @@ class OldMan {
     // is a part if your Dancer object.
     // comment it out or delete it eventually.
 
-    //rectMode(CORNER);
+    rectMode(CORNER);
     //this.drawReferenceShapes()
 
     pop();
