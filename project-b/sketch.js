@@ -323,7 +323,7 @@ function showWaveGame() {
 // ————————————————
 
 function setup() {
-  createCanvas(800, 500);
+  let canvas = createCanvas(800, 500);
   canvas.parent("p5-canvas-container");
   character = new Character(25, 125);
   gameMap = new GameMap();
