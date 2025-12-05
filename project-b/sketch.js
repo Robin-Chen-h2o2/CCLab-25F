@@ -19,23 +19,23 @@ class Character {
     let x = this.x;
     let y = this.y;
 
-    // 头
+    // head
     noStroke();
     fill(240, 216, 202);
     circle(x, y - s * 0.4, s * 0.9);
 
-    // 身体
+    // body
     fill(233, 215, 192);
     rectMode(CENTER);
     rect(x, y + s * 0.4, s * 0.6, s * 0.8);
 
-    // 手臂
+    // arms
     stroke(240, 216, 202);
     strokeWeight(3);
     line(x - s * 0.3, y + s * 0.2, x - s * 0.6, y + s * 0.4);
     line(x + s * 0.3, y + s * 0.2, x + s * 0.6, y + s * 0.4);
 
-    // 腿
+    // legs
     line(x - s * 0.1, y + s * 0.8, x - s * 0.2, y + s * 1.3);
     line(x + s * 0.1, y + s * 0.8, x + s * 0.2, y + s * 1.3);
   }
@@ -51,7 +51,7 @@ class Character {
   }
 
   isOnPath(x, y) {
-    // 路检测
+    // not outside the path
     if (x >= 0 && x <= 250 && y >= 100 && y <= 150) {
       return true;
     }
@@ -78,15 +78,15 @@ class Character {
   }
 
   checkFlag() {
-    // 旗子1
+    // near flag1?
     if (this.x >= 120 && this.x <= 180 && this.y >= 100 && this.y <= 150) {
       return 1;
     }
-    // 旗子2
+    // near flag2?
     if (this.x >= 420 && this.x <= 480 && this.y >= 250 && this.y <= 300) {
       return 2;
     }
-    // 旗子3
+    // near flag3?
     if (this.x >= 640 && this.x <= 700 && this.y >= 350 && this.y <= 400) {
       return 3;
     }
@@ -99,7 +99,7 @@ class GameMap {
   constructor() { }
 
   display() {
-    // 路
+    // path
     noStroke();
     fill(139, 69, 19);
     rectMode(CENTER);
@@ -111,13 +111,13 @@ class GameMap {
     rect(550, 350, 50, 100);
     rect(675, 375, 250, 50);
 
-    // 旗子底座
+    // the square under the flags
     fill(192, 180, 142);
     rect(150, 200, 50);
     rect(450, 200, 50);
     rect(670, 300, 50);
 
-    // 旗子
+    // flags
     this.drawFlag(150, 200);
     this.drawFlag(450, 200);
     this.drawFlag(670, 300);
@@ -138,7 +138,7 @@ class GameMap {
   }
 }
 
-// 打铁花
+// iron blossoms
 
 
 class BottomParticle {
@@ -222,30 +222,30 @@ class RotateParticle {
 function showFireworksGame() {
   background(20);
 
-  // 底部
+  // bottom particles
   if (random() < 0.3) {
     fireParticles.push(new BottomParticle(random(width), height));
   }
 
-  // 更新
+  // update the particles
   for (let i = fireParticles.length - 1; i >= 0; i--) {
     let p = fireParticles[i];
     p.update();
     p.display();
 
-    // 删除没生命的
+    // delete particles without life
     if (p.life <= 0) {
       fireParticles.splice(i, 1);
     }
   }
 
-  // 粒子总数
+  // restrict total number of the particles
   if (fireParticles.length > 500) {
     fireParticles.splice(0, 1);
   }
 }
 
-// 扎染
+// indigo dyeing
 
 class Wave {
   constructor(x, y) {
@@ -332,11 +332,11 @@ function setup() {
 
 function draw() {
   if (currentScreen == 'map') {
-    // 地图
+    // map
     background(39, 78, 19);
     gameMap.display();
 
-    // 移动人
+    // move-character
     if (keyIsDown(LEFT_ARROW)) {
       character.move(-character.speed, 0);
     }
@@ -350,10 +350,10 @@ function draw() {
       character.move(0, character.speed);
     }
 
-    // 人
+    // character
     character.display();
 
-    // 检查旗子
+    // check flags
     let flagNum = character.checkFlag();
     if (flagNum > 0) {
       fill(255);
@@ -405,12 +405,12 @@ function keyPressed() {
 
 function mousePressed() {
   if (currentScreen == 'fireworks') {
-    // 生成旋转粒子
+    // generate rotating particles
     for (let i = 0; i < 15; i++) {
       fireParticles.push(new RotateParticle(mouseX, mouseY));
     }
   } else if (currentScreen == 'waves') {
-    // 生成波纹
+    // generate waves
     waves.push(new Wave(mouseX, mouseY));
   }
 }
