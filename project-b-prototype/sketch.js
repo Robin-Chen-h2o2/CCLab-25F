@@ -53,7 +53,8 @@ class Indigo {
 let indigo;
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.parent("p5-canvas-container");
   indigo = new Indigo(width / 2, height / 2);
 }
 
