@@ -100,7 +100,7 @@ class Character {
   }
 
   checkEnd() {
-    // 检查是否到达地图末端
+    // ending reached?
     if (this.x >= 750 && this.y >= 350 && this.y <= 400) {
       return true;
     }
@@ -236,12 +236,12 @@ class RotateParticle {
 function showFireworksGame() {
   background(20);
 
-  // 长按鼠标持续生成底部粒子
+  // presspresspress
   if (mouseIsPressed) {
     if (random() < 0.5) {
       fireParticles.push(new BottomParticle(mouseX, mouseY));
     }
-    // 有操作，重置计时器
+    // reset alarm
     idleTimer = 0;
     showHint = false;
   }
@@ -268,7 +268,7 @@ function showFireworksGame() {
     fireParticles.splice(0, 1);
   }
 
-  // 显示提示文字
+  // hint
   if (showHint) {
     fill(255, 200);
     textSize(24);
@@ -281,7 +281,7 @@ function showFireworksGame() {
 
 // indigo dyeing
 
-// 五声调式游戏
+// gamr
 let audioContext;
 let pentatonicScale = [261.63, 293.66, 329.63, 392.00, 440.00]; // C D E G A
 
@@ -323,31 +323,31 @@ function convertNameToNotes(name) {
 function showPentatonicGame() {
   background(255, 243, 224);
 
-  // 标题
+  // title
   fill(180, 95, 6);
   textSize(40);
   textAlign(CENTER);
   text("Pentatonic Name Song", width / 2, 80);
 
-  // 说明
+  // intro
   fill(100, 50, 20);
   textSize(20);
   text("Enter your name and hear its melody!", width / 2, 130);
 
-  // 输入框背景
+  // input box bg
   fill(255);
   stroke(180, 95, 6);
   strokeWeight(3);
   rectMode(CENTER);
   rect(width / 2, 200, 400, 50, 10);
 
-  // 输入的名字
+  // names
   fill(0);
   noStroke();
   textSize(24);
   text(nameInput || "Type your name...", width / 2, 210);
 
-  // 显示音符
+  // keys
   if (nameSounds.length > 0) {
     fill(147, 196, 125);
     textSize(18);
@@ -360,7 +360,7 @@ function showPentatonicGame() {
       let x = startX + i * 40;
       let y = 320;
 
-      // 音符圆圈
+      // key drawing
       if (i === playingIndex) {
         fill(255, 200, 0);
         stroke(255, 150, 0);
@@ -371,7 +371,7 @@ function showPentatonicGame() {
       strokeWeight(3);
       circle(x, y, 35);
 
-      // 音符名称
+      // key
       fill(0);
       noStroke();
       textSize(20);
@@ -380,16 +380,16 @@ function showPentatonicGame() {
     }
   }
 
-  // 按钮
+  //  button
   drawButton(width / 2 - 100, 400, "Play", nameSounds.length > 0);
   drawButton(width / 2 + 100, 400, "Clear", nameInput.length > 0);
 
-  // 返回提示
+  // return
   fill(100);
   textSize(16);
   text("Press SPACE to return to map", width / 2, 470);
 
-  // 显示提示文字
+  // hint
   if (showHint) {
     fill(180, 95, 6, 200);
     textSize(22);
@@ -496,7 +496,7 @@ function showWaveGame() {
     }
   }
 
-  // 显示提示文字
+  // hint
   if (showHint) {
     fill(0, 145, 192);
     textSize(24);
@@ -506,7 +506,7 @@ function showWaveGame() {
   }
 }
 
-// 彩蛋结局界面
+// bonus
 function showEndingScreen() {
   background(213, 166, 189);
   textFont('Comic Sans MS');
@@ -514,14 +514,14 @@ function showEndingScreen() {
   textAlign(CENTER);
   text("To Be Continued", width / 2 - 70, height / 2);
 
-  // 三只猫咪的位置
+  // 3 cats
   let startX = width / 2 + 220;
   let y = height / 2 - 20;
   let spacing = 60;
 
   t += 0.1;
 
-  // 画三只Q版猫咪,每只延迟跳跃
+  // draw cats jump
   for (let i = 0; i < 3; i++) {
     let x = startX + i * spacing;
     let jump = abs(sin(t + i * 0.8)) * 20;
@@ -533,38 +533,38 @@ function cuteCat(x, y) {
   push();
   translate(x, y);
 
-  // 身体
+  // body
   noStroke();
   fill(255, 180, 120);
   ellipse(0, 0, 20, 22);
 
-  // 头
+  // head
   ellipse(0, -12, 18, 16);
 
-  // 耳朵
+  // ears
   triangle(-6, -18, -9, -23, -3, -19);
   triangle(6, -18, 9, -23, 3, -19);
 
-  // 眼睛（更大更圆）
+  // eyes
   fill(0);
   ellipse(-4, -13, 3, 4);
   ellipse(4, -13, 3, 4);
 
-  // 腮红
+  // brush
   fill(255, 150, 150, 100);
   ellipse(-6, -10, 4, 3);
   ellipse(6, -10, 4, 3);
 
-  // 小嘴巴
+  // mouth
   fill(0);
   ellipse(0, -8, 2, 1);
 
-  // 小爪子
+  // paw
   fill(255, 180, 120);
   ellipse(-5, 10, 4, 5);
   ellipse(5, 10, 4, 5);
 
-  // 尾巴
+  // tail
   ellipse(8, 6, 5, 12);
 
   pop();
@@ -581,7 +581,7 @@ function setup() {
 }
 
 function draw() {
-  // 计时器逻辑
+  // timer
   idleTimer++;
   if (idleTimer > 180) { // 3秒 = 180帧 (60fps)
     showHint = true;
@@ -614,7 +614,7 @@ function draw() {
       showHint = false;
     }
 
-    // 检查是否到达终点
+    // reaching end?
     if (character.checkEnd()) {
       currentScreen = 'ending';
       t = 0;
@@ -645,7 +645,7 @@ function draw() {
     textSize(50);
     text("ICH Footsteps", width / 2 - 160, 60);
 
-    // 显示提示文字
+    // hint text
     if (showHint) {
       fill(255, 230);
       textSize(22);
@@ -672,14 +672,13 @@ function draw() {
 
 
 function keyPressed() {
-  // 重置计时器
+  // reset timer
   idleTimer = 0;
   showHint = false;
 
-  // 五声调式界面输入
+  // input
   if (currentScreen == 'pentatonic') {
     if (key.length === 1 && nameInput.length < 15) {
-      // 只接受字母和数字
       if ((key >= 'a' && key <= 'z') || (key >= 'A' && key <= 'Z') || (key >= '0' && key <= '9')) {
         nameInput += key;
         nameSounds = convertNameToNotes(nameInput);
@@ -715,7 +714,7 @@ function keyPressed() {
         showHint = false;
       }
     } else if (currentScreen == 'ending') {
-      // 从彩蛋界面返回地图
+      // return to map(?) haven't figure out the bug
       currentScreen = 'map';
       currentFlag = 0;
       idleTimer = 0;
@@ -731,7 +730,7 @@ function keyPressed() {
 
 
 function mousePressed() {
-  // 重置计时器
+  // reset timer
   idleTimer = 0;
   showHint = false;
 
@@ -744,13 +743,13 @@ function mousePressed() {
     // generate waves
     waves.push(new Wave(mouseX, mouseY));
   } else if (currentScreen == 'pentatonic') {
-    // Play按钮
+    // Play button
     if (mouseX > width / 2 - 160 && mouseX < width / 2 - 40 &&
       mouseY > 380 && mouseY < 420 && nameSounds.length > 0) {
       playingIndex = 0;
       playMelody();
     }
-    // Clear按钮
+    // Clear botton
     if (mouseX > width / 2 + 40 && mouseX < width / 2 + 160 &&
       mouseY > 380 && mouseY < 420 && nameInput.length > 0) {
       nameInput = '';
